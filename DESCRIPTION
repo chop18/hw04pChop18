@@ -7,11 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ch3222a@american.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The package consisits of two functions. Function 1 finds the sum of a vector of three values up to the nth term. 
-Function 2 graphs the output of function 1 against the nth value.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Description: The package consists of two functions. Function 1 finds the sum of a vector of three values up to the nth term.Function 2 graphs the output of function 1 against the nth value. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Suggests: 
+    spelling
+Language: en-US
