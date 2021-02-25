@@ -1,13 +1,14 @@
 Package: hw04pChop18
-Title: What the Package Does (One Line, Title Case)
+Title: hw04pChop18
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Christopher",
+           family = "Hopkins",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "ch3222a@american.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: The package consisits of two functions. Function 1 finds the sum of a vector of three values up to the nth term. 
+Function 2 graphs the output of function 1 against the nth value.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
 Encoding: UTF-8
