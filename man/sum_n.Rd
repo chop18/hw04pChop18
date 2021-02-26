@@ -9,7 +9,7 @@ sum_n(v, n)
 \arguments{
 \item{vector}{of three numerics}
 
-\item{integer}{}
+\item{integer}{must be positive and not zero}
 }
 \value{
 a sum of numerics
@@ -20,5 +20,8 @@ The first three values must be defined and the nth term must be a integer greate
 }
 \examples{
 sum_n(c( 2, 4, 3), 5)
-\dontrun{ sum_n(c( 2, 4), 5), sum_n(c( 2, 4, 3), 5.5), sum_n(c( 2, 4, 3), -5)}
+\dontrun{ sum_n(c( 2, 4), 5),
+sum_n(c( 2, 4, 3), 5.5),
+sum_n(c( 2, 4, 3), -5),
+sum_n(c( 2, 4, 3), 0)}
 }

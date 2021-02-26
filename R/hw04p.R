@@ -3,15 +3,18 @@
 #'recursive function to find the nth sum of a sequence of values.
 #'The first three values must be defined and the nth term must be a integer greater than 0.
 #' @param vector of three numerics
-#' @param integer
+#' @param integer must be positive and not zero
 #'
 #' @return a sum of numerics
 #' @export sum_n
 #'
 #' @examples sum_n(c( 2, 4, 3), 5)
-#' \dontrun{ sum_n(c( 2, 4), 5), sum_n(c( 2, 4, 3), 5.5), sum_n(c( 2, 4, 3), -5)}
+#' \dontrun{ sum_n(c( 2, 4), 5),
+#' sum_n(c( 2, 4, 3), 5.5),
+#' sum_n(c( 2, 4, 3), -5),
+#' sum_n(c( 2, 4, 3), 0)}
 sum_n <- function(v,n){
-  stopifnot(length(v)==3, n>0 && n%%1==0)
+  stopifnot(length(v)==3, n>0, n%%1==0)
   z<-4
   if (n <4){
     return(v[n])
@@ -34,41 +37,55 @@ sum_n(c(2,4, 3), 5)
 #'#Takes a tibble or data frame and using sum_n calculates the nth sum.
 #the function then takes the outputted value and plots that against the nth value.
 #'
-#' @param a data frame or tibble
+#' @param data frame or tibble
 #'
 #' @return graph of outputs of sum_n against the value of n
 #' @export graph_sum_n
-#' @importFrom ggplot2 aes geom_line xlab ylab
+#' @importFrom ggplot2 ggplot aes geom_line xlab ylab
 #' @import tibble
 #' @importFrom dplyr row_number
-#' @examples test <- tibble::tribble(
-#' ~x, ~y, ~z, ~n,
-#' 2,4,3,3,
-#' 2,4,3,4,
-#' 2,4,3,5,
-#' 2,4,3,6,
-#' 2,4,3,7,
-#' 2,4,3,8,
-#' 2,4,3,9,
-#' 2,4,3,10,
-#' 2,4,3,12)
-#' graph_sum_n(test)
-#' error_df1 <- tibble::tribble(
-#' ~x, ~y, ~z, ~n,
-#' 2,4,3,3.5
-#' )
-#' error_df2 <- tibble::tribble(
-#' ~x, ~y, ~z, ~n,
-#' 2,4,3,0
-#' )
-#' error_df3 <-tribble(
-#' ~x, ~y, ~z, ~n,
-#' 2,4,3,-1
+#' @examples
+#' test <- tibble::tibble(
+#' x = 2,
+#' y = 4,
+#' z = 3,
+#' n = 3:12
 #' )
 #'
-#' \dontrun{ graph_sum_n(error_df1), graph_sum_n(error_df2), graph_sum_n(error_df3)}
+#' graph_sum_n(test)
+#'
+#' error_df1 <- tibble::tibble(
+#' x = 2,
+#' y = 3,
+#' n = 4
+#' )
+#'
+#' error_df2 <- tibble::tibble(
+#' x = 2,
+#' y = 4,
+#' z = 3,
+#' n = 0
+#' )
+#'
+#' error_df3 <- tibble::tibble(
+#' x = 2,
+#' y = 4,
+#' z = 3,
+#' n = -1
+#' )
+#'
+#' error_df4 <- tibble::tibble(
+#' x = 2,
+#' y = 4,
+#' z = 3,
+#' n = 6.5
+#' )
+#' \dontrun{ graph_sum_n(error_df1),
+#' graph_sum_n(error_df2),
+#' graph_sum_n(error_df3),
+#' graph_sum_n(error_df4)}
 graph_sum_n<-function(df){
-  stopifnot(length(df)==4, is.numeric( c ( df[[1]], df[[2]], df[[3]] ) ), df[[4]]%%1==0 && df[[4]]>0)
+  stopifnot(length(df)==4, is.numeric( c ( df[[1]], df[[2]], df[[3]] ) ), df[[4]]%%1==0, df[[4]]>0)
   x <- c()
   y <- c()
   for (i in row_number(df[[4]])){
@@ -85,16 +102,11 @@ graph_sum_n<-function(df){
 }
 
 #Test it
-my_data <- tibble::tribble(
-  ~x, ~y, ~z, ~n,
-  2,4,3,3,
-  2,4,3,4,
-  2,4,3,5,
-  2,4,3,6,
-  2,4,3,7,
-  2,4,3,8,
-  2,4,3,9,
-  2,4,3,10,
-  2,4,3,12)
+ test <- tibble::tibble(
+ x = 2,
+ y = 4,
+ z = 3,
+ n = 3:12
+ )
 
-graph_sum_n(my_data)
+graph_sum_n(test)

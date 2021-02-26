@@ -7,7 +7,7 @@
 graph_sum_n(df)
 }
 \arguments{
-\item{a}{data frame or tibble}
+\item{data}{frame or tibble}
 }
 \value{
 graph of outputs of sum_n against the value of n
@@ -16,30 +16,43 @@ graph of outputs of sum_n against the value of n
 #Takes a tibble or data frame and using sum_n calculates the nth sum.
 }
 \examples{
-test <- tibble::tribble(
-~x, ~y, ~z, ~n,
-2,4,3,3,
-2,4,3,4,
-2,4,3,5,
-2,4,3,6,
-2,4,3,7,
-2,4,3,8,
-2,4,3,9,
-2,4,3,10,
-2,4,3,12)
-graph_sum_n(test)
-error_df1 <- tibble::tribble(
-~x, ~y, ~z, ~n,
-2,4,3,3.5
-)
-error_df2 <- tibble::tribble(
-~x, ~y, ~z, ~n,
-2,4,3,0
-)
-error_df3 <-tribble(
-~x, ~y, ~z, ~n,
-2,4,3,-1
+test <- tibble::tibble(
+x = 2,
+y = 4,
+z = 3,
+n = 3:12
 )
 
-\dontrun{ graph_sum_n(error_df1), graph_sum_n(error_df2), graph_sum_n(error_df3)}
+graph_sum_n(test)
+
+error_df1 <- tibble::tibble(
+x = 2,
+y = 3,
+n = 4
+)
+
+error_df2 <- tibble::tibble(
+x = 2,
+y = 4,
+z = 3,
+n = 0
+)
+
+error_df3 <- tibble::tibble(
+x = 2,
+y = 4,
+z = 3,
+n = -1
+)
+
+error_df4 <- tibble::tibble(
+x = 2,
+y = 4,
+z = 3,
+n = 6.5
+)
+\dontrun{ graph_sum_n(error_df1),
+graph_sum_n(error_df2),
+graph_sum_n(error_df3),
+graph_sum_n(error_df4)}
 }
