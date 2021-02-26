@@ -20,4 +20,5 @@ Imports:
     ggplot2,
     tibble,
     dplyr
-
+URL: https://github.com/chop18/hw04pChop18
+BugReports: https://github.com/chop18/hw04pChop18/issues
